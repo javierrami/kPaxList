@@ -5,10 +5,10 @@
  *
  */
 
-  elgg_register_event_handler('init', 'system', 'likes_init');
+  elgg_register_event_handler('init', 'system', 'kPaxList_init');
 
 
-function likes_init(){
+function kPaxList_init(){
 
     elgg_extend_view('css/elgg', 'likes/css');
     elgg_extend_view('js/elgg', 'likes/js');
