@@ -19,6 +19,11 @@
 		<name>kPAX_core</name>
 		<version>1.5</version>
 	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
+		<plugin>kPAX_core</plugin>
+	</requires>
 	<activate_on_install>false</activate_on_install>
 	<admin_interface>advanced</admin_interface>
 </plugin_manifest>
