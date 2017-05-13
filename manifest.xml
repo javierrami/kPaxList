@@ -14,6 +14,11 @@
 		<type>elgg_release</type>
 		<version>1.9</version>
 	</requires>
+	<requires>
+		<type>plugin</type>
+		<name>kPAX_core</name>
+		<version>1.5</version>
+	</requires>
 	<activate_on_install>false</activate_on_install>
 	<admin_interface>advanced</admin_interface>
 </plugin_manifest>
