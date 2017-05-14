@@ -5,10 +5,10 @@
  *
  */
 
-  elgg_register_event_handler('init', 'system', 'kPaxList_init');
+  elgg_register_event_handler('init', 'system', 'kpaxlist_init');
 
 
-function kPaxList_init(){
+function kpaxlist_init(){
 
     elgg_extend_view('css/elgg', 'likes/css');
     elgg_extend_view('js/elgg', 'likes/js');
@@ -19,17 +19,49 @@ function kPaxList_init(){
 
     $root = dirname(__FILE__);
 
-    $root = str_replace("kPaxList", "kpax", $root);
+    $root = str_replace("kpaxlist", "kpax", $root);
 
-
-    elgg_register_library('elgg:kpaxSrv', "$root/lib/kpaxSrv.php");
+//En teoria al estar ya la libreria registrada es necesario solo cargarla. Ya que el plugin se ejecuta después de kapax. 
+//    elgg_register_library('elgg:kpaxSrv', "$root/lib/kpaxSrv.php");
     elgg_load_library('elgg:kpaxSrv');
 
-    $actions_base = elgg_get_plugins_path() . 'kPaxList/actions/likes';
-
-    elgg_register_action('kPaxList/add', "$actions_base/add.php");
-    elgg_register_action('kPaxList/delete', "$actions_base/delete.php");
+    //Registra como se procesa la pagina
+    elgg_register_page_handler('kpaxlist', 'kpaxlist_page_handler');
     
+  
+  
+  /* Esto forma parte del plugin antiguo
+    $actions_base = elgg_get_plugins_path() . 'kpaxlist/actions/likes';
+
+    elgg_register_action('kpaxlist/add', "$actions_base/add.php");
+    elgg_register_action('kpaxlist/delete', "$actions_base/delete.php");
+  
+  
+
+  
+  //There we register the menus. 
+    elgg_register_menu_item('site', array(
+        'name' => 'kpaxlist',
+        'text' => elgg_echo('kPAX:devs'),
+        'href' => 'kpaxlist/list'
+    ));
+  */  
 }
 
+function kpaxlist_page_handler($page) {
+  
+    $pages = dirname(__FILE__) . '/pages';
 
+    switch ($page[0]) {
+        case "all":
+            include "$pages/all.php";
+            break;
+        default:
+            return false;
+    }
+
+    elgg_pop_context();
+
+    return true;    
+  
+}
