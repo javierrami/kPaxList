@@ -237,6 +237,20 @@ class kpaxSrv {
         return $this->service("/game/tag/" . $campusSession . "/list/" . $idGame);
         return $listTags;
     }
+    
+    
+    /**
+    *Obtiene el resultado de un tag especifico. 
+    * Tags: 
+    *	Similar Games
+    *	Skills
+    *	Platforms
+    *	Platforms
+    */
+    public function getTagsGame($campusSession, $idGame, $tag) {
+        return $this->service("/game/tag/" . $campusSession . "/list/" . $idGame);
+        return $listTags;
+    }
 
     //DEL because is in the game itself
     // public function addDelTagsGame($campusSession, $idGame, $tagsCommaSeparated) {

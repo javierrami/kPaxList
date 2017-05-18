@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This plugin search inside 
+ * This plugin search inside, in order to find the best app to show you.
+ * 
+ * @javierrami
  *
  */
 
@@ -14,6 +16,7 @@ function kpaxlist_init(){
     elgg_extend_view('js/elgg', 'likes/js');
 
     // registered with priority < 500 so other plugins can remove likes
+    //La verdad que no se para que esta esto.
     elgg_register_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup', 400);
     elgg_register_plugin_hook_handler('register', 'menu:entity', 'likes_entity_menu_setup', 400);
 
@@ -56,6 +59,9 @@ function kpaxlist_page_handler($page) {
         case "all":
             include "$pages/all.php";
             break;
+        case "view":
+        	include "$pages/view.php";
+        	break;
         default:
             return false;
     }
