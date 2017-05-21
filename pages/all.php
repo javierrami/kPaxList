@@ -5,14 +5,14 @@ elgg_register_title_button();
 $objKpax = new kpaxSrv(elgg_get_logged_in_user_entity()->username);
 
 /* Get categories, platforms and skills */
-$categories = $objKpax->getCategories($_SESSION["campusSession"]);
-$platforms = $objKpax->getCategories($_SESSION["campusSession"]);
+$categories = array ("categoria 1","categoria 2");
+//$categories = $objKpax->getCategories($_SESSION["campusSession"]);
+$platforms = array ("android","unix");
 //$platforms = $objKpax->getPlatforms($_SESSION["campusSession"]);
-$skills = $objKpax->getCategories($_SESSION["campusSession"]);
+$skills = array ("muycomplicado","facil");
 //$skills = $objKpax->getSkills($_SESSION["campusSession"]);
-$metadatas = $objKpax->getCategories($_SESSION["campusSession"]);
+$metadatas = array ("metadato1","metadato1");
 //$metadatas = $objKpax->getMetaDatas($_SESSION["campusSession"]);
-
 /* Default values + Save last form value */
 $name = "";
 $category = "0";
@@ -54,8 +54,8 @@ if(isset($_POST['sort'])) $sort = $_POST['sort'];
 					}
 					$content .= "<form method='post' action='all'>";
 					$content .= "<fieldset>";
-					$content .= "<input type='hidden' name='category' value='".$cat->idCategory."' />";
-					$content .= "<input style='".$selected."' type='submit' value='".$cat->name."' />";
+					$content .= "<input type='hidden' name='category' value='".$cat."' />";
+					$content .= "<input style='".$selected."' type='submit' value='".$cat."' />";
 					$content .= "</fieldset>";
 					$content .= "</form>";
 				}
@@ -100,9 +100,9 @@ if(isset($_POST['sort'])) $sort = $_POST['sort'];
 								foreach($platforms as $plat)
 								{
 									$selected = "";
-									if($plat->idPlatform == $platform)
+									if($plat == $platform)
 										$selected = "selected='selected'";
-									$content.="<option value='".$plat->idPlatform."' ".$selected.">".$plat->name."</option>";
+									$content.="<option value='".$plat."' ".$selected.">".$plat."</option>";
 								}
 							$content.="</select>";
 						$content.="</p>";
@@ -114,9 +114,9 @@ if(isset($_POST['sort'])) $sort = $_POST['sort'];
 								foreach($skills as $skill)
 								{
 									$selected = "";
-									if($skill->idSkill == $ski)
+									if($skill == $ski)
 										$selected = "selected='selected'";
-									$content .= "<option value='".$skill->idSkill."' ".$selected.">".$skill->name."</option>";
+									$content .= "<option value='".$skill."' ".$selected.">".$skill."</option>";
 								}
 							$content.="</select>";
 						$content.="</p>";
@@ -197,6 +197,9 @@ if ($valueMeta==""){
 //$sort is not necessary (default value assigned = 1)
 
 /* Call kPAX */
+
+
+$gameList = $objKpax->getListGames( $_SESSION["campusSession"],$idOrderer, $idFilterer, $fields, $values);
 //$gameList = $objKpax->getListGamesSearch($name, $category, $platform, $ski, $tag, $keyMeta, $valueMeta, $sort, $offset, $limit, $_SESSION["campusSession"]);
 	
 	
@@ -270,8 +273,9 @@ $body = elgg_view_layout('one_column', array(
 		));
 
 /* CSS include */
-$css_url = 'mod/kpax/views/default/css/elements/gamelist.css';
-elgg_register_css('gamelist', $css_url);
+//CLEAN DELETE
+//$css_url = 'mod/kpax/views/default/css/elements/gamelist.css';
+//elgg_register_css('gamelist', $css_url);
 elgg_load_css('gamelist');
 
 echo elgg_view_page($title, $body);

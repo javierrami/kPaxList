@@ -245,7 +245,7 @@ class kpaxSrv {
     *	Similar Games
     *	Skills
     *	Platforms
-    *	Platforms
+    *	
     */
     public function getTagsGame($campusSession, $idGame, $tag) {
         return $this->service("/game/tag/" . $campusSession . "/list/" . $idGame);
