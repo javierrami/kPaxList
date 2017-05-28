@@ -25,7 +25,7 @@ function kpaxlist_init(){
     $root = str_replace("kpaxlist", "kpax", $root);
 
 //En teoria al estar ya la libreria registrada es necesario solo cargarla. Ya que el plugin se ejecuta después de kapax. 
-	elgg_register_library('elgg:kpaxSrv', "$root/lib/kpaxSrv.php");
+	//elgg_register_library('elgg:kpaxSrv', "$root/lib/kpaxSrv.php");
     elgg_load_library('elgg:kpaxSrv');
 
     //Registra como se procesa la pagina

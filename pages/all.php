@@ -5,14 +5,11 @@ elgg_register_title_button();
 $objKpax = new kpaxSrv(elgg_get_logged_in_user_entity()->username);
 
 /* Get categories, platforms and skills */
-$categories = array ("categoria 1","categoria 2");
-//$categories = $objKpax->getCategories($_SESSION["campusSession"]);
-$platforms = array ("android","unix");
-//$platforms = $objKpax->getPlatforms($_SESSION["campusSession"]);
-$skills = array ("muycomplicado","facil");
-//$skills = $objKpax->getSkills($_SESSION["campusSession"]);
-$metadatas = array ("metadato1","metadato1");
-//$metadatas = $objKpax->getMetaDatas($_SESSION["campusSession"]);
+
+$categories = $objKpax->getCategories("category");
+$platforms = $objKpax->getCategories("platform");
+$skills = $objKpax->getCategories("skill");
+$metadatas = $objKpax->getCategories("metadata");
 /* Default values + Save last form value */
 $name = "";
 $category = "0";
